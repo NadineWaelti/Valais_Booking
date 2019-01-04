@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Valais Booking</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header; bottom">
+                <button type="button" class="navbar-toggle" style="background-color:gold" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Valais Booking", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Présentation", "Hotel", "Home")</li>
+                    <li>@Html.ActionLink("Search", "Formulaire", "Home")</li>
+                    <li>@Html.ActionLink("Advanced Search", "Edit", "Home")</li>
+                    <li>@Html.ActionLink("Group Reservation", "FormulaireGroupe", "Home")</li>
+                    <li>@Html.ActionLink("Annulation", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div container-fluid>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <address class="text-left">
+                            Valais Booking<br />
+                            Grande Avenue 5<br />
+                            1950 Sion
+                        </address>
+                    </div>
+                    <div class="col-sm-4">
+                        <address class="text-left">
+                            T.<abbr title="Phone">+41 27 346 60 60</abbr><br />
+                            F.<abbr title="Phone">+41 27 346 60 61</abbr><br />
+                            info@valaisbooking.ch<br />
+                        </address>
+                    </div>
+                    <div class="col-sm-4">
+                        <p class="text-right">&copy; @DateTime.Now.Year Valais Booking</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

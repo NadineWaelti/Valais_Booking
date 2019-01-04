@@ -1,0 +1,68 @@
+﻿@model MVC.ViewModels.OverviewVM
+
+@{
+    ViewBag.Title = "Overview";
+}
+<br />
+<h1>Aperçu de vos réservations</h1><br />
+
+<table class="table" style="width:100%">
+    <tr>
+        <th>
+            Code
+        </th>
+        <th>
+            Entrée
+        </th>
+        <th>
+            Sortie
+        </th>
+        <th>
+            Nom
+        </th>
+        <th>
+            Prénom
+        </th>
+        <th>
+            Prix
+        </th>
+        <th>
+            Chambre
+        </th>
+    </tr>
+    @for (int i = 0; i < Model.Reservations.Count(); i++)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Reservations.ElementAt(i).Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Reservations.ElementAt(i).Debut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Reservations.ElementAt(i).Fin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Reservations.ElementAt(i).NomClient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Reservations.ElementAt(i).PrenomClient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Reservations.ElementAt(i).Price)
+            </td>
+            <td>
+                @for (int j = 0; j < Model.Liens.Count(); j++)
+                {
+                    if (Model.Liens.ElementAt(j).ReservationId == Model.Reservations.ElementAt(i).Id)
+                    {
+                        <a>N° @Html.DisplayFor(modelItem => Model.Liens.ElementAt(j).RoomId) </a> <br />
+                    }
+                }
+            </td>
+        </tr>
+
+    }
+
+</table>

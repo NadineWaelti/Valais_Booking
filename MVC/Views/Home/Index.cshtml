@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+<div class="col-sm-12" style="width:1000px;align-content:inherit">
+    <br /> <h1 class="h1" style="text-align:center"><strong>Valais Booking</strong></h1>
+
+    <h3 style="text-align:center">
+        Valais Booking est un site leader en matière d’hébergement en Valais. Nous offrons un choix incomparable avec notre Garantie de prix. Vous pouvez annuler une réservation directement sur notre site et sans payer de frais.
+    </h3>
+    <br />
+    <DIV style="align-content:initial" ID=ejs_photo_box></DIV>
+    <SCRIPT LANGUAGE=JavaScript>
+        ejs_photo = new Array
+        ejs_photo[0] = 'https://www.relaisdusilence.com/media/cache/destination_main_slider_rds/images/marques/rds/destinations/switzerland.jpg';
+        ejs_photo[1] = 'http://images.gadmin.st.s3.amazonaws.com/n22930/image/listHeaderImage/valere_tourbillon-3.jpg';
+        ejs_photo[2] = 'http://img.myswitzerland.com/mys/n26324/images/buehne/brigerbad09__048neu.jpg';
+        ejs_photo[3] = 'http://img.myswitzerland.com/mys/n26168/images/buehne/sts3168.jpg';
+
+
+        function ejs_aff_photos(num) {
+            if (document.getElementById) {
+                ejs_fin = "";
+                if (num != 0)
+                    ejs_fin += "<A HREF=# onClick='ejs_aff_photos(" + (num - 1) + ");return(false)'>< Précédent</A>     ";
+                if (num != (ejs_photo.length - 1))
+                    ejs_fin += "<A HREF=# onClick='ejs_aff_photos(" + (num + 1) + ");return(false)'>Suivant ></A>";
+                document.getElementById("ejs_photo_box").innerHTML = "<CENTER><IMG SRC='" + ejs_photo[num] + "' BORDER=0><BR>" + ejs_fin + "</CENTER>";
+            }
+        }
+        window.onload = new Function("ejs_aff_photos(0)")
+    </SCRIPT>
+    <br /><br /><br />
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+

@@ -1,0 +1,193 @@
+﻿@model MVC.ViewModels.SearchVM
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("ReservationGroupe", "Reservation", FormMethod.Post))
+{
+
+    <br /><br />
+    <center><br /><h1 style="color:crimson"><strong>♥ Offre Valais Booking ♥</strong></h1><br /></center><br /><br />
+
+
+    <br />
+
+    <table class="table">
+        <tr class="h3">
+            <th style="text-align:center; width:5%">
+                Code
+            </th>
+            <th style="text-align:center; width:10%">
+                Chambre n°
+            </th>
+            <th style="text-align:right; width:10%">
+                Options
+            </th>
+            <th style="text-align:center; width:35%">
+                Photos
+            </th>
+            <th style="text-align:left; width:30%">
+                Description
+            </th>
+            <th style="text-align:center; width:10%">
+                Prix
+            </th>
+        </tr>
+
+        @for (int i = 0; i < Model.Chambres.Count(); i++)
+        {
+
+            <tr>
+                <td style="vertical-align:middle">
+                    <br /><center>
+
+                        @Html.DisplayFor(modelItem => Model.Chambres.ElementAt(i).Id)<br />
+                    </center><br /><br />
+                </td>
+                <td style="vertical-align:middle">
+                    <br /><center>
+                        @Html.DisplayFor(modelItem => Model.Chambres.ElementAt(i).Number)<br />
+                    </center><br /><br />
+                </td>
+                <td style="vertical-align:middle; text-align:right">
+                    <br />
+                    Lit(s) : @Html.DisplayFor(modelItem => Model.Chambres.ElementAt(i).Type)<br />
+                    Sèche-cheveux : @Html.DisplayFor(modelItem => Model.Chambres.ElementAt(i).HasHairDryer)<br />
+                    TV : @Html.DisplayFor(modelItem => Model.Chambres.ElementAt(i).HasTV)<br />
+
+                    <br /><br />
+                </td>
+                <td style="vertical-align:middle">
+                    <center>
+                        <br />
+                        @foreach (var item in Model.Picture)
+                        {
+                            if (item.IdRoom.Id == Model.Chambres[i].Id)
+                            {
+                                <img src="@Html.DisplayFor(modelItem => item.Url)" width="200" height="200" />
+                            }
+
+                        }
+                    </center>
+
+                    <br /><br />
+                </td>
+                <td style="width: 400px;vertical-align:middle;text-align:justify">
+                    @Html.ActionLink("Description de l'hôtel", "Hotel", "Home")<br /><br />
+                    @foreach (var item in Model.LesHotels)
+                    {
+                        if (item.Id == Model.Chambres.ElementAt(i).IdHotel.Id)
+                        {
+                            <a style="color:blue;text-decoration:underline" href="@Html.DisplayFor(modelItem => item.Website)">@Html.DisplayFor(modelItem => item.Website)</a>
+
+                        }
+
+                    }
+                    <br /><br />
+                    @Html.Raw(Model.Chambres.ElementAt(i).Description)
+                    <br />
+                </td>
+                <td style="width: 200px;vertical-align:middle">
+                    <center>
+                        @Html.DisplayFor(modelItem => Model.Chambres.ElementAt(i).Price) CHF <br />
+                    </center>
+                </td>
+            </tr>
+
+
+        }
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="text-align:center"><strong>Total @Html.DisplayFor(modelItem => Model.Price) CHF </strong></td>
+        </tr>
+
+    </table>
+
+
+    <center>
+        <div style="width:300px">
+            @Html.Label("nom")
+            @Html.TextBox("nom", null, new { @class = "form-control", @required = "required" })<br />
+            @Html.Label("prenom")
+            @Html.TextBox("prenom", null, new { @class = "form-control", @required = "required" })<br />
+            @Html.Hidden("entre", Model.Debut)
+            @Html.Hidden("sort", Model.Fin)
+            @for (int i = 0; i < Model.Chambres.Count(); i++)
+            {
+                @Html.Hidden("numero[]", Model.Chambres.ElementAt(i).Id)
+            }
+            @Html.Hidden("prix", Model.Price)
+            <button type="submit" class="btn-warning">Réserver</button><br /><br />
+        </div>
+    </center>
+
+
+
+
+}
+
+
+
+<br />
+<center>
+    <p>
+        @Html.ActionLink("Revenir à la recherche", "FormulaireGroupe", "Home")
+    </p>
+    <p>
+        @Html.ActionLink("Accueil", "Index", "Home")
+    </p>
+</center>
+<br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+

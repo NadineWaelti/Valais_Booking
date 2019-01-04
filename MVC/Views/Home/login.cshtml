@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<!DOCTYPE html>
+
+<div style="background-image:url(http://www.hotel-r.net/im/hotel/fr/bambou-zen-8.jpg)">
+    @using (Html.BeginForm("Overview", "Home", FormMethod.Post))
+    {<br /> <h1>Login</h1><br />
+        @Html.Label("nom")
+        @Html.TextBox("nom", null, new { @class = "form-control", @required = "required" })
+        <br />
+        @Html.Label("prenom")
+        @Html.TextBox("prenom", null, new { @class = "form-control", @required = "required" })
+        <br />        
+        <input type="submit" class="btn-warning" value="Envoi" />
+    }
+</div>
+<br />
+<div>
+    @Html.ActionLink("Accueil", "Index")
+</div>

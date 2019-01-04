@@ -1,0 +1,80 @@
+﻿@model MVC.Models.MailModel
+@{
+    ViewBag.Title = "Vous avez des questions ? Contactez-nous !";
+}
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <hr />
+    <div class="form-group">
+        @Html.LabelFor(m => m.FromName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FromName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FromName)
+        </div>
+    </div>
+    <br /> <br /> <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.FromEmail, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FromEmail, new { @class = "form-control", @pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$", @title= "characters@characters.domain" })
+            @Html.ValidationMessageFor(m => m.FromEmail)
+        </div>
+    </div>
+    <br /> <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.Message, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.Message, new { @class = "form-control", @cols = "15", @rows = "10" })
+            @Html.ValidationMessageFor(m => m.Message)
+        </div>
+    </div>
+    <br/>
+    <div class="form-group" style="height:250px">
+        <div class="col-md-offset-2 col-md-5">
+            <input type="submit" class="btn btn-default" value="Send" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+

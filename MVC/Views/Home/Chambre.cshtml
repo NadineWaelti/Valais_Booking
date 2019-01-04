@@ -1,0 +1,115 @@
+﻿@model MVC.ViewModels.SearchVM
+
+@{
+    Layout = null;
+}
+<br /><br />
+<center><br /><h1 style="color:crimson"><strong>♥ Hôtel @Html.DisplayFor(modelItem => Model.Chambres.ElementAt(0).IdHotel.Name) ♥</strong></h1><br /></center><br /><br />
+
+<table class="table">
+    <tr class="h3">
+        <th style="text-align:center; width:10%">
+            Chambre n°
+        </th>
+        <th style="text-align:center; width:10%">
+            Options
+        </th>
+        <th style="text-align:center; width:40%">
+            Photos
+        </th>
+        <th style="text-align:center; width:30%">
+            Description
+        </th>
+        <th style="text-align:center; width:10%">
+            Prix indicatif
+        </th>
+
+
+    </tr>
+
+    @for (int i = 0; i < Model.Chambres.Count(); i++)
+    {
+
+        <tr>
+            <td style="vertical-align:middle">
+                <br /><center>
+                    @Html.DisplayFor(modelItem => Model.Chambres.ElementAt(i).Number)<br />
+                </center><br /><br />
+            </td>
+            <td style="vertical-align:middle">
+                <br /><center>
+                    Lit(s) : @Html.DisplayFor(modelItem => Model.Chambres.ElementAt(i).Type)<br />
+                    Sèche-cheveux : @Html.DisplayFor(modelItem => Model.Chambres.ElementAt(i).HasHairDryer)<br />
+                    TV : @Html.DisplayFor(modelItem => Model.Chambres.ElementAt(i).HasTV)<br />
+                    <a href="@Html.DisplayFor(modelItem => Model.Hotel.Website)">@Html.DisplayFor(modelItem => Model.Hotel.Website)</a>
+                </center><br /><br />
+            </td>
+            <td>
+                <center>
+                    @foreach (var item in Model.Picture)
+                    {
+                        if (item.IdRoom.Id == Model.Chambres[i].Id)
+                        {
+                            <img src="@Html.DisplayFor(modelItem => item.Url)" width="200" height="200" />
+                        }
+
+                    }
+                </center>
+            </td>
+
+            <td style="vertical-align:middle;text-align:justify">
+
+                @Html.Raw(Model.Chambres.ElementAt(i).Description)
+
+            </td>
+
+            <td style="vertical-align:middle">
+                <center>
+                    @Html.DisplayFor(modelItem => Model.Chambres.ElementAt(i).Price) CHF <br />
+                </center>
+            </td>
+        </tr>
+
+
+    }
+
+</table>
+
+
+<center>
+    <p>
+        @Html.ActionLink("Revenir à la liste des hôtels", "Hotel", "Home")
+    </p>
+    <p>
+        @Html.ActionLink("Accueil", "Index", "Home")
+    </p>
+</center>
+<br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
